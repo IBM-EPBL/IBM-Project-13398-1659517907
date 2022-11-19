@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Predict Car Price</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <table style="margin: 10px; text-align: justify; width: 100%">
+      <tr>
+        <td
+          style="background-color: #304040; color: white"
+          colspan="2"
+          align="center">
+          <h1>Car Resale Value Predictor</h1>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <h2></h2>
+        </td>
+      </tr>
+    </table>
+    <div class="">
+      <div class="panel col-sm-6 left">
+	  <div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Please fill the following details of your car:</h6>
+		</div>
+		<div class="card-body">
+      <form id="frmPredict" name="frmPredict" class="user">
+        <div class="form-row">
+          <div class="col-md-4 mb-4">
+            <label for="brand" class="col-form-label">Car Brand</label> 
+            <select class="form-control form-control-user" id="brand" name="brand" required>
+              <option>alfa_romeo</option>
+              <option>audi</option>
+              <option>bmw</option>
+              <option>chevrolet</option>
+              <option>chrysler</option>
+              <option>citroen</option>
+              <option>dacia</option>
+              <option>daewoo</option>
+              <option>daihatsu</option>
+              <option>fiat</option>
+              <option>ford</option>
+              <option>honda</option>
+              <option>hyundai</option>
+              <option>jaguar</option>
+              <option>jeep</option>
+              <option>kia</option>
+              <option>lada</option>
+              <option>lancia</option>
+              <option>land_rover</option>
+              <option>mazda</option>
+              <option>mercedes_benz</option>
+              <option>mini</option>
+              <option>mitsubishi</option>
+              <option>nissan</option>
+              <option>opel</option>
+              <option>peugeot</option>
+              <option>porsche</option>
+              <option>renault</option>
+              <option>rover</option>
+              <option>saab</option>
+              <option>seat</option>
+              <option>skoda</option>
+              <option>smart</option>
+              <option>sonstige_autos</option>
+              <option>subaru</option>
+              <option>suzuki</option>
+              <option>toyota</option>
+              <option>trabant</option>
+              <option>volkswagen</option>
+              <option>volvo</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="modeltype" class="col-form-label">Model Type</label> 
+            <select class="form-control form-control-user" id="modeltype" name="modeltype" required>
+              <option>100</option>
+              <option>145</option>
+              <option>147</option>
+              <option>156</option>
+              <option>159</option>
+              <option>1_reihe</option> 
+            </select> 
+          </div>          
+        <div class="col-md-4 mb-4">
+          <label for="regdate" class="col-form-label">Reg. Month/Year</label> 
+            <input  class="form-control form-control-user" type="month" id="regdate" name="regdate"  required/>
+            <input
+              type="hidden"
+              class="form-control form-control-user"
+              id="regyear"
+              name="regyear"
+              placeholder="Registration Year"
+            />
+            <input
+              type="hidden"
+              class="form-control form-control-user"
+              id="regmonth"
+              name="regmonth"
+              placeholder="Registration Month"
+            /> 
+        </div>
+      </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-4">
+            <label for="powerps" class="col-form-label">Power in PS</label>
+            <input
+              type="number"
+              class="form-control form-control-user"
+              id="powerps"
+              name="powerps"
+              placeholder="Power of car in PS" required
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+          <label for="kms" class="col-form-label">Kilometers Driven</label>
+            <input
+              type="number"
+              class="form-control form-control-user"
+              id="kms"
+              name="kms"
+              placeholder="Kilometers the car has driven" required
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="gearbox" class="col-form-label">Gear Box Type</label> 
+            <select class="form-control form-control-user" id="gearbox" name="gearbox" required>
+              <option>Manual</option>
+              <option>Automatic</option>
+              <option>not-declared</option> 
+            </select> 
+          </div> 
+        </div>  
+        <div class="form-row">
+          <div class="col-md-4 mb-4">
+          <label for="fuel" class="col-form-label">Car Fuel Type</label>
+            <select class="form-control form-control-user" id="fuel" name="fuel">
+              <option value"cng">CNG</option>
+              <option value"diesel">DIESEL</option>
+              <option value"electric">ELECTRIC</option>
+              <option value"hybrid">HYBRID</option>
+              <option value"lpg">LPG</option>
+              <option value"not-declared">not-declared</option>
+              <option value"others">OTHERS</option>
+              <option value"petrol">PETROL</option>
+            </select>
+          </div> 
+          <div class="col-md-4 mb-4">
+          <label for="vehicletype" class="col-form-label">Vehicle Type</label>
+            <select class="form-control form-control-user" id="vehicletype" name="vehicletype">
+              <option>suv</option>
+              <option>small car</option>
+              <option>limousine</option>
+              <option>convertible</option>
+              <option>bus</option>
+              <option>combination</option>
+              <option>not-declared</option>
+              <option>coupe</option>
+              <option>others</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="dam" class="col-form-label">Car Repaired/Damaged</label> 
+            <select class="form-control form-control-user" id="dam" name="dam" required>
+              <option>Yes</option>
+              <option>No</option>
+              <option>not-declared</option> 
+            </select> 
+          </div> 
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-4 center">
+            <button
+              type="button"
+              id="predictjson"
+              name="predictjson"
+              class="btn btn-primary form-control form-control-user"
+            >
+              PREDICT
+            </button>
+          </div>
+          <!-- <div class="col-sm-4 center">
+            <button
+              type="button"
+              id="Reset"
+              name="Reset"
+              class="btn btn-success form-control form-control-user"
+            >
+              CLEAR
+            </button>
+          </div> -->
+        </div>
+      </form>
+      </div>
+	  </div>
+	  </div>
+    </div> 
+    <div class="card border-left-success shadow h-100 py-2 col-xl-3 col-md-6 mb-4">
+      <div class="card-body">
+          <div class="row no-gutters align-items-center">
+              <img id="logo" name="logo" src="/static/logos/alfa_romeo.png" height="80px" width="80px"/>
+              <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                      Resale Value</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h2 id="result" name="result">{{ypred}}</h2></div>
+              </div>
+              <div class="col-auto">
+                  <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
+              </div>
+          </div>
+      </div>
+      
+  </div>
+	    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+    <script lang="javascript">
+      var brandmodel=[['alfa_romeo','145'],['alfa_romeo','147'],['alfa_romeo','156'],['alfa_romeo','159'],['alfa_romeo','andere'],['alfa_romeo','not-declared'],['alfa_romeo','spider'],['audi','80'],['audi','90'],['audi','100'],['audi','200'],['audi','a1'],['audi','a2'],['audi','a3'],['audi','a4'],['audi','a5'],['audi','a6'],['audi','a8'],['audi','andere'],['audi','not-declared'],['audi','q3'],['audi','q5'],['audi','q7'],['audi','tt'],['bmw','1er'],['bmw','3er'],['bmw','5er'],['bmw','6er'],['bmw','7er'],['bmw','andere'],['bmw','i3'],['bmw','m_reihe'],['bmw','not-declared'],['bmw','x_reihe'],['bmw','z_reihe'],['chevrolet','andere'],['chevrolet','aveo'],['chevrolet','captiva'],['chevrolet','matiz'],['chevrolet','not-declared'],['chevrolet','spark'],['chrysler','300c'],['chrysler','andere'],['chrysler','crossfire'],['chrysler','grand'],['chrysler','not-declared'],['chrysler','ptcruiser'],['chrysler','voyager'],['citroen','andere'],['citroen','berlingo'],['citroen','c1'],['citroen','c2'],['citroen','c3'],['citroen','c4'],['citroen','c5'],['citroen','not-declared'],['dacia','andere'],['dacia','duster'],['dacia','lodgy'],['dacia','logan'],['dacia','not-declared'],['dacia','sandero'],['daewoo','andere'],['daewoo','kalos'],['daewoo','lanos'],['daewoo','matiz'],['daewoo','not-declared'],['daewoo','nubira'],['daihatsu','andere'],['daihatsu','charade'],['daihatsu','cuore'],['daihatsu','materia'],['daihatsu','move'],['daihatsu','not-declared'],['daihatsu','sirion'],['daihatsu','terios'],['fiat','500'],['fiat','andere'],['fiat','bravo'],['fiat','croma'],['fiat','doblo'],['fiat','ducato'],['fiat','not-declared'],['fiat','panda'],['fiat','punto'],['fiat','seicento'],['fiat','stilo'],['ford','andere'],['ford','b_max'],['ford','c_max'],['ford','escort'],['ford','fiesta'],['ford','focus'],['ford','fusion'],['ford','galaxy'],['ford','ka'],['ford','kuga'],['ford','mondeo'],['ford','mustang'],['ford','not-declared'],['ford','s_max'],['ford','transit'],['honda','accord'],['honda','andere'],['honda','civic'],['honda','cr_reihe'],['honda','jazz'],['honda','not-declared'],['hyundai','andere'],['hyundai','getz'],['hyundai','i_reihe'],['hyundai','not-declared'],['hyundai','santa'],['hyundai','tucson'],['jaguar','andere'],['jaguar','not-declared'],['jaguar','s_type'],['jaguar','x_type'],['jeep','andere'],['jeep','cherokee'],['jeep','grand'],['jeep','not-declared'],['jeep','wrangler'],['kia','andere'],['kia','carnival'],['kia','ceed'],['kia','not-declared'],['kia','picanto'],['kia','rio'],['kia','sorento'],['kia','sportage'],['lada','andere'],['lada','kalina'],['lada','niva'],['lada','not-declared'],['lada','samara'],['lancia','andere'],['lancia','delta'],['lancia','elefantino'],['lancia','kappa'],['lancia','lybra'],['lancia','musa'],['lancia','not-declared'],['lancia','ypsilon'],['land_rover','andere'],['land_rover','defender'],['land_rover','discovery'],['land_rover','freelander'],['land_rover','not-declared'],['land_rover','range_rover'],['land_rover','range_rover_evoque'],['land_rover','range_rover_sport'],['land_rover','serie_2'],['land_rover','serie_3'],['mazda','1_reihe'],['mazda','3_reihe'],['mazda','5_reihe'],['mazda','6_reihe'],['mazda','andere'],['mazda','cx_reihe'],['mazda','mx_reihe'],['mazda','not-declared'],['mazda','rx_reihe'],['mercedes_benz','a_klasse'],['mercedes_benz','andere'],['mercedes_benz','b_klasse'],['mercedes_benz','c_klasse'],['mercedes_benz','cl'],['mercedes_benz','clk'],['mercedes_benz','e_klasse'],['mercedes_benz','g_klasse'],['mercedes_benz','gl'],['mercedes_benz','glk'],['mercedes_benz','m_klasse'],['mercedes_benz','not-declared'],['mercedes_benz','s_klasse'],['mercedes_benz','sl'],['mercedes_benz','slk'],['mercedes_benz','sprinter'],['mercedes_benz','v_klasse'],['mercedes_benz','viano'],['mercedes_benz','vito'],['mini','andere'],['mini','clubman'],['mini','cooper'],['mini','not-declared'],['mini','one'],['mitsubishi','andere'],['mitsubishi','carisma'],['mitsubishi','colt'],['mitsubishi','galant'],['mitsubishi','lancer'],['mitsubishi','not-declared'],['mitsubishi','outlander'],['mitsubishi','pajero'],['nissan','almera'],['nissan','andere'],['nissan','juke'],['nissan','micra'],['nissan','navara'],['nissan','not-declared'],['nissan','note'],['nissan','primera'],['nissan','qashqai'],['nissan','x_trail'],['opel','agila'],['opel','andere'],['opel','antara'],['opel','astra'],['opel','calibra'],['opel','combo'],['opel','corsa'],['opel','insignia'],['opel','kadett'],['opel','meriva'],['opel','not-declared'],['opel','omega'],['opel','signum'],['opel','tigra'],['opel','vectra'],['opel','vivaro'],['opel','zafira'],['peugeot','1_reihe'],['peugeot','2_reihe'],['peugeot','3_reihe'],['peugeot','4_reihe'],['peugeot','5_reihe'],['peugeot','andere'],['peugeot','not-declared'],['porsche','911'],['porsche','andere'],['porsche','boxster'],['porsche','cayenne'],['porsche','not-declared'],['renault','andere'],['renault','clio'],['renault','espace'],['renault','kangoo'],['renault','laguna'],['renault','megane'],['renault','modus'],['renault','not-declared'],['renault','r19'],['renault','scenic'],['renault','twingo'],['rover','andere'],['rover','defender'],['rover','discovery'],['rover','freelander'],['rover','not-declared'],['rover','rangerover'],['saab','900'],['saab','9000'],['saab','andere'],['saab','not-declared'],['seat','alhambra'],['seat','altea'],['seat','andere'],['seat','arosa'],['seat','cordoba'],['seat','exeo'],['seat','ibiza'],['seat','leon'],['seat','mii'],['seat','not-declared'],['seat','toledo'],['skoda','andere'],['skoda','citigo'],['skoda','fabia'],['skoda','not-declared'],['skoda','octavia'],['skoda','roomster'],['skoda','superb'],['skoda','yeti'],['smart','andere'],['smart','forfour'],['smart','fortwo'],['smart','not-declared'],['smart','roadster'],['sonstige_autos','not-declared'],['subaru','andere'],['subaru','forester'],['subaru','impreza'],['subaru','justy'],['subaru','legacy'],['subaru','not-declared'],['suzuki','andere'],['suzuki','grand'],['suzuki','jimny'],['suzuki','not-declared'],['suzuki','swift'],['toyota','andere'],['toyota','auris'],['toyota','avensis'],['toyota','aygo'],['toyota','corolla'],['toyota','not-declared'],['toyota','rav'],['toyota','verso'],['toyota','yaris'],['trabant','andere'],['trabant','not-declared'],['volkswagen','amarok'],['volkswagen','andere'],['volkswagen','beetle'],['volkswagen','bora'],['volkswagen','caddy'],['volkswagen','cc'],['volkswagen','eos'],['volkswagen','fox'],['volkswagen','golf'],['volkswagen','jetta'],['volkswagen','kaefer'],['volkswagen','lupo'],['volkswagen','not-declared'],['volkswagen','passat'],['volkswagen','phaeton'],['volkswagen','polo'],['volkswagen','scirocco'],['volkswagen','sharan'],['volkswagen','tiguan'],['volkswagen','touareg'],['volkswagen','touran'],['volkswagen','transporter'],['volkswagen','up'],['volvo','850'],['volvo','andere'],['volvo','c_reihe'],['volvo','not-declared'],['volvo','s60'],['volvo','v40'],['volvo','v50'],['volvo','v60'],['volvo','v70'],['volvo','xc_reihe']];
+      var brands=[];
+      var models=[];
+      var prevval=''
+      var arr=[];
+      brandmodel.forEach(element => {
+        val=element[0];
+        // console.log(val,prevval,arr);
+        if (val!=prevval){
+          //console.log('new model',val);
+          if (arr.length>0){
+            brands.push(prevval);
+            models.push([prevval,arr]);
+            //console.log(models);
+          }
+          prevval=val;
+          arr=[];
+        }
+        arr.push(element[1]);
+      });
+
+      var $el = $("#brand");
+      $el.empty();
+      $.each(brands, function(item, index) {
+      $el.append($("<option></option>").attr("value", index).text(index.replace('_',' ').toUpperCase()));
+      });
+
+      $(function(){
+
+        $('button#predictjson').click(function(){
+          $.ajax({
+            type: 'POST',
+            url: '/predict',
+            data: $('form#frmPredict').serialize(),
+            success: function(msg){$('#result').empty().append(msg.result);},
+            error: function() {alert('failure');}
+          });
+        });
+
+        $('select#brand').change(function(){
+          $('#logo').attr("src","/static/logos/"+$('#brand').val()+".png");
+          models.forEach(element => {
+          if ($('#brand').val()==element[0]){
+            var $el = $("#modeltype");
+            $el.empty();
+            $.each(element[1], function(item, index) {
+              $el.append($("<option></option>").attr("value", index).text(index.toUpperCase()));
+            });
+          }
+          });
+        });
+
+        $('input#regdate').change(function(){
+          dt=$('#regdate').val();
+          $('#regyear').val(dt.substr(0,4));
+          $('#regmonth').val(dt.substr(5,2));
+        });
+      });
+    </script>
+  </body>
+</html>
